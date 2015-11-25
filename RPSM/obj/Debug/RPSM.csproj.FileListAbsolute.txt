@@ -1,0 +1,9 @@
+c:\src\RPSM\RPSM\bin\Debug\RPSM.exe.config
+c:\src\RPSM\RPSM\obj\Debug\RPSM.csprojResolveAssemblyReference.cache
+c:\src\RPSM\RPSM\obj\Debug\RPSM.Form1.resources
+c:\src\RPSM\RPSM\obj\Debug\RPSM.Properties.Resources.resources
+c:\src\RPSM\RPSM\obj\Debug\RPSM.csproj.GenerateResource.Cache
+c:\src\RPSM\RPSM\bin\Debug\RPSM.exe
+c:\src\RPSM\RPSM\bin\Debug\RPSM.pdb
+c:\src\RPSM\RPSM\obj\Debug\RPSM.exe
+c:\src\RPSM\RPSM\obj\Debug\RPSM.pdb
