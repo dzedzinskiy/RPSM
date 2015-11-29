@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
+using GraphVizWrapper;
+using GraphVizWrapper.Commands;
+using GraphVizWrapper.Queries;
 using RPSM.Utilities;
 using WebFormsHelpers =  RPSM.Utilities.WebFormsHelpers;
 
@@ -15,7 +20,8 @@ namespace RPSM
             InitializeComponent();
             Utils = new Utils
             {
-                WebFormsHelpers = new WebFormsHelpers()
+                WebFormsHelpers = new WebFormsHelpers(),
+                GraphGenerator = new GraphGenerator()
             };
         }
 
@@ -35,10 +41,59 @@ namespace RPSM
             CalculateLS_I_J(Input_data, CalculateGrid);
             CalculateR_I_J(Input_data, CalculateGrid);
             Calculate_Krutuchnui_Shljah(Input_data, CalculateGrid);
+            Calculate_Nazva_Roboty(Input_data, CalculateGrid);
+            GenerateGraph(CalculateGrid);
         }
 
         #region Calculations
-        
+
+        private void GenerateGraph(DataGridView from)
+        {
+            int index = 0;
+
+            string input = @"digraph{ [ rankdir = ""LR"" ]; size=""7,5""; node [shape = circle]; node [ fontsize = ""16"",  fontname=""Arial"" ]; graph[size=""6.0,7.0""]";
+            foreach (DataGridViewRow dgvr in from.Rows)
+            {
+                string label = String.Empty;
+                if (index % Utils.Alphabeth.Length > 0)
+                {
+                    for (var i1 = 0; i1 < index%Utils.Alphabeth.Length; i1++)
+                    {
+                        label += Utils.Alphabeth[i1];
+                    }
+                }
+                if (from.Rows[dgvr.Index].Cells[1].Value != null &&
+                    from.Rows[dgvr.Index].Cells[1].Value.ToString().Length > 0)
+                {
+                    string dashed = (from.Rows[dgvr.Index].Cells[3].Value != null &&
+                                     Utils.ConvertToDecimal(from.Rows[dgvr.Index].Cells[3].Value) == 0)
+                        ? " [style=dashed] "
+                        : String.Empty;
+                    string element = from.Rows[dgvr.Index].Cells[1].Value + " -> " +
+                                     from.Rows[dgvr.Index].Cells[2].Value +
+                                     " [ label = \"" +  Utils.Alphabeth[index] + " - " +
+                                     from.Rows[dgvr.Index].Cells[3].Value + "\"] " + dashed;
+                    input += element;
+                    index += 1;
+                }
+            }
+            input += "}";
+
+            byte[] outputPng = Utils.GraphGenerator.GenerateGraph(input, Enums.GraphReturnType.Png);
+            ResultGraph.Image = Utils.ByteArrayToBitmap(outputPng);
+        }
+
+        private void Calculate_Nazva_Roboty(DataGridView gridView, DataGridView to)
+        {
+            foreach (DataGridViewRow dgvr in gridView.Rows)
+            {
+                if (to.Rows[dgvr.Index].Cells[0].Value != null && Utils.ConvertToDecimal(to.Rows[dgvr.Index].Cells[0].Value) > 0)
+                {
+                    to.Rows[dgvr.Index].Cells[12].Value = Utils.Alphabeth[dgvr.Index];
+                }
+            }
+        }
+
         private void CalculateH_I(DataGridView gridView, DataGridView to)
         {
             foreach (DataGridViewRow dgvr in gridView.Rows)

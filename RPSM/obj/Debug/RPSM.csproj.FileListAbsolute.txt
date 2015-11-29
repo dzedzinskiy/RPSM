@@ -7,3 +7,8 @@ c:\src\RPSM\RPSM\bin\Debug\RPSM.exe
 c:\src\RPSM\RPSM\bin\Debug\RPSM.pdb
 c:\src\RPSM\RPSM\obj\Debug\RPSM.exe
 c:\src\RPSM\RPSM\obj\Debug\RPSM.pdb
+C:\src\RPSM\RPSM\bin\Debug\GraphVizWrapper.dll
+C:\src\RPSM\RPSM\bin\Debug\Microsoft.VisualStudio.Imaging.dll
+C:\src\RPSM\RPSM\bin\Debug\Microsoft.VisualStudio.Utilities.dll
+C:\src\RPSM\RPSM\bin\Debug\Microsoft.VisualStudio.Imaging.xml
+C:\src\RPSM\RPSM\bin\Debug\Microsoft.VisualStudio.Utilities.xml

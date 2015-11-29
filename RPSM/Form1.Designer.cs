@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.InputData = new System.Windows.Forms.TabPage();
+            this.CriticalLabel = new System.Windows.Forms.Label();
+            this.Critical = new System.Windows.Forms.TextBox();
             this.CalculateButton = new System.Windows.Forms.Button();
             this.Input_data = new System.Windows.Forms.DataGridView();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,6 +40,8 @@
             this.tij = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CalculationParameters = new System.Windows.Forms.TabPage();
             this.CalculateGrid = new System.Windows.Forms.DataGridView();
+            this.Graph = new System.Windows.Forms.TabPage();
+            this.ResultGraph = new System.Windows.Forms.PictureBox();
             this.ResultNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.result_i = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.result_j = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,15 +54,14 @@
             this.result_LS_i_j = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.result_LF_i_j = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.result_R_i_j = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Graph = new System.Windows.Forms.TabPage();
-            this.Critical = new System.Windows.Forms.TextBox();
-            this.CriticalLabel = new System.Windows.Forms.Label();
+            this.WorkName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.InputData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Input_data)).BeginInit();
             this.CalculationParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CalculateGrid)).BeginInit();
             this.Graph.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ResultGraph)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -74,6 +77,8 @@
             // 
             // InputData
             // 
+            this.InputData.Controls.Add(this.CriticalLabel);
+            this.InputData.Controls.Add(this.Critical);
             this.InputData.Controls.Add(this.CalculateButton);
             this.InputData.Controls.Add(this.Input_data);
             this.InputData.Location = new System.Drawing.Point(4, 22);
@@ -83,6 +88,22 @@
             this.InputData.TabIndex = 0;
             this.InputData.Text = "Ввід даних";
             this.InputData.UseVisualStyleBackColor = true;
+            // 
+            // CriticalLabel
+            // 
+            this.CriticalLabel.AutoSize = true;
+            this.CriticalLabel.Location = new System.Drawing.Point(471, 56);
+            this.CriticalLabel.Name = "CriticalLabel";
+            this.CriticalLabel.Size = new System.Drawing.Size(91, 13);
+            this.CriticalLabel.TabIndex = 3;
+            this.CriticalLabel.Text = "Критичний шлях:";
+            // 
+            // Critical
+            // 
+            this.Critical.Location = new System.Drawing.Point(568, 53);
+            this.Critical.Name = "Critical";
+            this.Critical.Size = new System.Drawing.Size(228, 20);
+            this.Critical.TabIndex = 2;
             // 
             // CalculateButton
             // 
@@ -156,12 +177,32 @@
             this.result_EF_i_j,
             this.result_LS_i_j,
             this.result_LF_i_j,
-            this.result_R_i_j});
+            this.result_R_i_j,
+            this.WorkName});
             this.CalculateGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CalculateGrid.Location = new System.Drawing.Point(3, 3);
             this.CalculateGrid.Name = "CalculateGrid";
             this.CalculateGrid.Size = new System.Drawing.Size(1365, 527);
             this.CalculateGrid.TabIndex = 0;
+            // 
+            // Graph
+            // 
+            this.Graph.Controls.Add(this.ResultGraph);
+            this.Graph.Location = new System.Drawing.Point(4, 22);
+            this.Graph.Name = "Graph";
+            this.Graph.Padding = new System.Windows.Forms.Padding(3);
+            this.Graph.Size = new System.Drawing.Size(1371, 533);
+            this.Graph.TabIndex = 2;
+            this.Graph.Text = "Граф";
+            this.Graph.UseVisualStyleBackColor = true;
+            // 
+            // ResultGraph
+            // 
+            this.ResultGraph.Location = new System.Drawing.Point(0, 0);
+            this.ResultGraph.Name = "ResultGraph";
+            this.ResultGraph.Size = new System.Drawing.Size(1350, 860);
+            this.ResultGraph.TabIndex = 0;
+            this.ResultGraph.TabStop = false;
             // 
             // ResultNumber
             // 
@@ -225,33 +266,10 @@
             this.result_R_i_j.HeaderText = "R(i-j)";
             this.result_R_i_j.Name = "result_R_i_j";
             // 
-            // Graph
+            // WorkName
             // 
-            this.Graph.Controls.Add(this.CriticalLabel);
-            this.Graph.Controls.Add(this.Critical);
-            this.Graph.Location = new System.Drawing.Point(4, 22);
-            this.Graph.Name = "Graph";
-            this.Graph.Padding = new System.Windows.Forms.Padding(3);
-            this.Graph.Size = new System.Drawing.Size(1371, 533);
-            this.Graph.TabIndex = 2;
-            this.Graph.Text = "Граф";
-            this.Graph.UseVisualStyleBackColor = true;
-            // 
-            // Critical
-            // 
-            this.Critical.Location = new System.Drawing.Point(97, 25);
-            this.Critical.Name = "Critical";
-            this.Critical.Size = new System.Drawing.Size(100, 20);
-            this.Critical.TabIndex = 0;
-            // 
-            // CriticalLabel
-            // 
-            this.CriticalLabel.AutoSize = true;
-            this.CriticalLabel.Location = new System.Drawing.Point(6, 28);
-            this.CriticalLabel.Name = "CriticalLabel";
-            this.CriticalLabel.Size = new System.Drawing.Size(91, 13);
-            this.CriticalLabel.TabIndex = 1;
-            this.CriticalLabel.Text = "Критичний шлях:";
+            this.WorkName.HeaderText = "Назва Роботи";
+            this.WorkName.Name = "WorkName";
             // 
             // Form1
             // 
@@ -263,11 +281,12 @@
             this.Text = "Обчислення параметрів сіткового графа";
             this.tabControl1.ResumeLayout(false);
             this.InputData.ResumeLayout(false);
+            this.InputData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Input_data)).EndInit();
             this.CalculationParameters.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CalculateGrid)).EndInit();
             this.Graph.ResumeLayout(false);
-            this.Graph.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ResultGraph)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -285,6 +304,9 @@
         private System.Windows.Forms.TabPage Graph;
         private System.Windows.Forms.Button CalculateButton;
         private System.Windows.Forms.DataGridView CalculateGrid;
+        private System.Windows.Forms.Label CriticalLabel;
+        private System.Windows.Forms.TextBox Critical;
+        private System.Windows.Forms.PictureBox ResultGraph;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResultNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn result_i;
         private System.Windows.Forms.DataGridViewTextBoxColumn result_j;
@@ -297,8 +319,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn result_LS_i_j;
         private System.Windows.Forms.DataGridViewTextBoxColumn result_LF_i_j;
         private System.Windows.Forms.DataGridViewTextBoxColumn result_R_i_j;
-        private System.Windows.Forms.Label CriticalLabel;
-        private System.Windows.Forms.TextBox Critical;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WorkName;
 
 
     }
